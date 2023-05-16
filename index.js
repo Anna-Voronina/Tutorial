@@ -9,3 +9,18 @@
 // }
 
 // let playerDesk = [];
+
+///Створити обєкт dog,дати йому ім'я
+// Створити функцію dogArr на основі функції з обєкту animal
+// Створити функцію showLegs,яка буде портати рядок з імям собаки та кількістю ніг з animal(call)
+// Cтворити функцю зміни кількості ніг в animal,передати її в dog так,щоб при виклиці з dog вона змінювала кількість ніг в animal
+
+// const animal = {
+//     legs:4,
+//     changeLeg(newLegs){
+// this.legs = newLegs
+//     },
+//     sayArrr(){
+//     return `${this.name} say arrrr!`
+//     }
+// }
