@@ -24,3 +24,31 @@
 //     return `${this.name} say arrrr!`
 //     }
 // }
+
+// const topBooksAPI = new SwaggerAPI();
+
+// window.addEventListener('resize', onWindowResize);
+
+// function onWindowResize() {
+//   if (window.matchMedia('(max-width: 376px)').matches) {
+//   }
+
+//   if (window.matchMedia('(min-width: 768px)').matches) {
+//   }
+
+//   if (window.matchMedia('(min-width: 1440px)').matches) {
+//   }
+// }
+
+// async function createCategory() {
+//   const { data } = await topBooksAPI.fetchTopBooks();
+
+//   const markUp = `<li>
+//    <p class="category-name">${}</p>
+//   <ul>
+//   </ul>
+//   <button class="category-list-button">see more</button>
+//     </li>`;
+// }
+
+// createCategory();
