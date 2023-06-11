@@ -52,3 +52,82 @@
 // }
 
 // createCategory();
+
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyA-c5ktNEt2bpwdrjlWbguPygCPHCJWGLM',
+  authDomain: 'authentication-6949a.firebaseapp.com',
+  projectId: 'authentication-6949a',
+  storageBucket: 'authentication-6949a.appspot.com',
+  messagingSenderId: '312217541484',
+  appId: '1:312217541484:web:32ea78d2e9302b00f63149',
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const authForm = document.querySelector('.auth-form');
+const signUpButton = document.querySelector('.sign-up-button');
+const signInButton = document.querySelector('.sign-in-button');
+
+const userSignUp = async () => {
+  const signUpEmail = userEmail.value;
+  const signUpPassword = userPassword.value;
+  createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+    .then(userCredential => {
+      const user = userCredential.user;
+      console.log(user);
+      alert('Your account has been created!');
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode + errorMessage);
+    });
+};
+
+const userSignIn = async event => {
+  console.log(event.currentTarget);
+  const signInEmail = event.currentTarget.elements.user_email;
+  const signInPassword = event.currentTarget.elements.user_password;
+  signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+    .then(userCredential => {
+      const user = userCredential.user;
+      alert('You have signed in successfully!');
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode + errorMessage);
+    });
+};
+
+const checkAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      authForm.style.display = 'none';
+      secretContent.style.display = 'block';
+    } else {
+      authForm.style.display = 'block';
+      secretContent.style.display = 'none';
+    }
+  });
+};
+
+const userSignOut = async () => {
+  await signOut(auth);
+};
+
+checkAuthState();
+
+signUpButton.addEventListener('click', userSignUp);
+signInButton.addEventListener('click', userSignIn);
+signOutButton.addEventListener('click', userSignOut);
